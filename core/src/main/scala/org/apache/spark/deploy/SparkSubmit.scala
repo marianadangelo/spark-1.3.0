@@ -41,6 +41,9 @@ import org.apache.spark.SPARK_VERSION
 import org.apache.spark.deploy.rest._
 import org.apache.spark.util.{ChildFirstURLClassLoader, MutableURLClassLoader, Utils}
 
+// Mariana
+import java.io._
+
 /**
  * Whether to submit, kill, or request the status of an application.
  * The latter two operations are currently supported only for standalone cluster mode.
@@ -102,6 +105,12 @@ object SparkSubmit {
   }
 
   def main(args: Array[String]): Unit = {
+
+    // Mariana
+    val writer = new PrintWriter(new File("/root/mariana.txt" ))
+    writer.write("SparkSubmit main")
+    writer.close()
+
     val appArgs = new SparkSubmitArguments(args)
     if (appArgs.verbose) {
       printStream.println(appArgs)
@@ -746,7 +755,7 @@ private[spark] object SparkSubmitUtils {
       md.addDependency(dd)
     }
   }
-  
+
   /** Add exclusion rules for dependencies already included in the spark-assembly */
   private[spark] def addExclusionRules(
       ivySettings: IvySettings,
