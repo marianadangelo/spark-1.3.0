@@ -40,6 +40,9 @@ import org.apache.spark.streaming.receiver.{ActorReceiver, ActorSupervisorStrate
 import org.apache.spark.streaming.scheduler._
 import org.apache.spark.streaming.ui.{StreamingJobProgressListener, StreamingTab}
 
+// Mariana
+import java.io._
+
 /**
  * Main entry point for Spark Streaming functionality. It provides methods used to create
  * [[org.apache.spark.streaming.dstream.DStream]]s from various input sources. It can be either
@@ -63,6 +66,12 @@ class StreamingContext private[streaming] (
    * @param batchDuration the time interval at which streaming data will be divided into batches
    */
   def this(sparkContext: SparkContext, batchDuration: Duration) = {
+
+    // Mariana
+    val writer = new PrintWriter(new File("/root/mariana.txt" ))
+    writer.write("this(sparkContext: SparkContext, batchDuration: Duration)")
+    writer.close()
+
     this(sparkContext, null, batchDuration)
   }
 
@@ -72,6 +81,12 @@ class StreamingContext private[streaming] (
    * @param batchDuration the time interval at which streaming data will be divided into batches
    */
   def this(conf: SparkConf, batchDuration: Duration) = {
+
+    // Mariana
+    val writer = new PrintWriter(new File("/root/mariana.txt" ))
+    writer.write("this(conf: SparkConf, batchDuration: Duration)")
+    writer.close()
+
     this(StreamingContext.createNewSparkContext(conf), null, batchDuration)
   }
 
@@ -88,6 +103,18 @@ class StreamingContext private[streaming] (
       sparkHome: String = null,
       jars: Seq[String] = Nil,
       environment: Map[String, String] = Map()) = {
+
+    // Mariana
+    val writer = new PrintWriter(new File("/root/mariana.txt" ))
+    writer.write("this(
+        master: String,
+        appName: String,
+        batchDuration: Duration,
+        sparkHome: String = null,
+        jars: Seq[String] = Nil,
+        environment: Map[String, String] = Map())")
+    writer.close()
+
     this(StreamingContext.createNewSparkContext(master, appName, sparkHome, jars, environment),
          null, batchDuration)
   }
