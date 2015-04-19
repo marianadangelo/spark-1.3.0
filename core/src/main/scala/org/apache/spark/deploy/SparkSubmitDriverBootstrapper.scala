@@ -43,7 +43,7 @@ private[spark] object SparkSubmitDriverBootstrapper {
 
     // Mariana
     val writer = new PrintWriter(new File("/root/mariana.txt" ))
-    writer.write("SparkSubmit main")
+    writer.write("SparkSubmitDriverBootstrap main")
     writer.close()
 
     // This should be called only from `bin/spark-class`
