@@ -192,7 +192,7 @@ class SparkContext(config: SparkConf) extends Logging with ExecutorAllocationCli
 
   // log out Spark Version in Spark driver log
   logInfo(s"Running Spark version $SPARK_VERSION")
-  logInfo(s"MARIANA")
+  logInfo("MARIANA")
 
   private[spark] val conf = config.clone()
   conf.validateSettings()
