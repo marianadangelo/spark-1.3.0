@@ -19,6 +19,9 @@ package org.apache.spark.deploy
 
 import java.io.File
 
+// Mariana
+import java.io._
+
 import scala.collection.JavaConversions._
 
 import org.apache.spark.util.{RedirectThread, Utils}
@@ -37,6 +40,11 @@ private[spark] object SparkSubmitDriverBootstrapper {
   // Any changes made there must be reflected in this file.
 
   def main(args: Array[String]): Unit = {
+
+    // Mariana
+    val writer = new PrintWriter(new File("/root/mariana.txt" ))
+    writer.write("SparkSubmit main")
+    writer.close()
 
     // This should be called only from `bin/spark-class`
     if (!sys.env.contains("SPARK_CLASS")) {
