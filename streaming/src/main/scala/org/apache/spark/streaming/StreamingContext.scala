@@ -40,9 +40,6 @@ import org.apache.spark.streaming.receiver.{ActorReceiver, ActorSupervisorStrate
 import org.apache.spark.streaming.scheduler._
 import org.apache.spark.streaming.ui.{StreamingJobProgressListener, StreamingTab}
 
-// Mariana
-import java.io._
-
 /**
  * Main entry point for Spark Streaming functionality. It provides methods used to create
  * [[org.apache.spark.streaming.dstream.DStream]]s from various input sources. It can be either
@@ -146,6 +143,16 @@ class StreamingContext private[streaming] (
       newGraph.setBatchDuration(batchDur_)
       newGraph
     }
+  }
+
+  // Mariana
+
+  def changeBatchDuration (newBatchDuration: Int) {
+    logInfo("Old batch duration: %s".format(batchDur_))
+    logInfo("Old graph: %s".format(graph))
+    graph.setBatchDuration(newBatchDuration)
+    logInfo("New batch duration: %s".format(newBatchDuration))
+    logInfo("New graph: %s".format(graph))
   }
 
   private val nextReceiverInputStreamId = new AtomicInteger(0)
