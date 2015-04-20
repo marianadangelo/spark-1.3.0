@@ -147,7 +147,7 @@ class StreamingContext private[streaming] (
 
   // Mariana
 
-  def changeBatchDuration (newBatchDuration: Int) {
+  def changeBatchDuration (newBatchDuration: Duration) {
     logInfo("Old batch duration: %s".format(batchDur_))
     logInfo("Old graph: %s".format(graph))
     graph.setBatchDuration(newBatchDuration)
