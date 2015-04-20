@@ -67,6 +67,7 @@ final private[streaming] class DStreamGraph extends Serializable with Logging {
   }
 
   def setBatchDuration(duration: Duration) {
+    logInfo("Trying to set batch duration %s".format(duration))
     this.synchronized {
       if (batchDuration != null) {
         throw new Exception("Batch duration already set as " + batchDuration +
@@ -190,4 +191,3 @@ final private[streaming] class DStreamGraph extends Serializable with Logging {
     }
   }
 }
-
