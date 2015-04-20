@@ -70,6 +70,7 @@ final private[streaming] class DStreamGraph extends Serializable with Logging {
     logInfo("Trying to set batch duration %s".format(duration))
     this.synchronized {
       if (batchDuration != null) {
+        logInfo("Can't set batch duration")
         throw new Exception("Batch duration already set as " + batchDuration +
           ". cannot set it again.")
       }
