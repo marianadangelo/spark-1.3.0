@@ -146,7 +146,8 @@ private[spark] class MetricsSystem private (
       val regName = buildRegistryName(source)
       registry.register(regName, source.metricRegistry)
     } catch {
-      case e: IllegalArgumentException => logInfo("Metrics already registered", e)
+      // It's fine if we can't register the metric - it's expected if we're reusing contexts
+      //case e: IllegalArgumentException => logInfo("Metrics already registered", e)
     }
   }
 
